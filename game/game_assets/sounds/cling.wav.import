@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cling.wav-28eb7e108998853d17464f95385700a2.sample"
+
+[deps]
+
+source_file="res://game/game_assets/sounds/cling.wav"
+dest_files=[ "res://.import/cling.wav-28eb7e108998853d17464f95385700a2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

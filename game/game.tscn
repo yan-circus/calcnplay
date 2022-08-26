@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game/game.gd" type="Script" id=1]
+[ext_resource path="res://game/game_items/HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/game_assets/sounds/dead-bird.wav" type="AudioStream" id=3]
+[ext_resource path="res://game/game_items/bg.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/game_assets/sounds/cling.wav" type="AudioStream" id=5]
+[ext_resource path="res://game/game_items/puzzle.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 704, 32 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="HUD" parent="." instance=ExtResource( 2 )]
+
+[node name="Bg" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2, 0 )
+
+[node name="Puzzle" parent="." instance=ExtResource( 6 )]
+
+[node name="QuestTimer" type="Timer" parent="."]
+wait_time = 10.0
+__meta__ = {
+"_editor_description_": "fréquence d'apparition des questions"
+}
+
+[node name="DisplayQuestionTimer" type="Timer" parent="."]
+one_shot = true
+__meta__ = {
+"_editor_description_": "en cas de réponse fausse délai pendant lequel la réponse attendue reste affichée."
+}
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="delayActiveQuestionTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+__meta__ = {
+"_editor_description_": "delai entre la prise en charge d'une réponse et l'activation de la question suivante.
+(pour éviter les erreurs queue_free)"
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="ColorRect" type="ColorRect" parent="Area2D"]
+margin_left = 1.0
+margin_top = 704.0
+margin_right = 1408.0
+margin_bottom = 768.0
+color = Color( 0.556863, 0.0862745, 0.384314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 704, 736 )
+shape = SubResource( 1 )
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="GoodAnswerSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="timeout" from="QuestTimer" to="." method="_on_quest_timer_timeout"]
+[connection signal="timeout" from="DisplayQuestionTimer" to="." method="_on_DisplayQuestionTimer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="delayActiveQuestionTimer" to="." method="_on_delayActiveQuestionTimer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -1,0 +1,201 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/fonts/Dyuthi.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ui/pages/main.gd" type="Script" id=2]
+[ext_resource path="res://ui/ui_items/game_entry.tscn" type="PackedScene" id=3]
+[ext_resource path="res://themes/ui_theme.tres" type="Theme" id=4]
+[ext_resource path="res://ui/ui_assets/buttons/cross_exit_hover.png" type="Texture" id=5]
+[ext_resource path="res://ui/ui_assets/buttons/cross_exit.png" type="Texture" id=8]
+[ext_resource path="res://ui/ui_assets/buttons/cross_exit_pressed.png" type="Texture" id=9]
+[ext_resource path="res://ui/ui_assets/buttons/settings_hover.png" type="Texture" id=10]
+[ext_resource path="res://ui/ui_assets/buttons/settings.png" type="Texture" id=11]
+[ext_resource path="res://ui/ui_assets/buttons/settings_pressed.png" type="Texture" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 1 )
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.24493
+margin_top = 8.24492
+margin_right = 6.24493
+margin_bottom = 8.24493
+theme = ExtResource( 4 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.92549, 0.47451, 0.109804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="header" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 780.0
+margin_bottom = 50.0
+
+[node name="LabelTitle" type="Label" parent="VBoxContainer/header"]
+margin_right = 672.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "main screen"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/header"]
+visible = false
+margin_left = 844.0
+margin_top = 18.0
+margin_right = 895.0
+margin_bottom = 32.0
+text = "OPtions"
+align = 1
+
+[node name="Tbutton_options" type="TextureButton" parent="VBoxContainer/header"]
+margin_left = 676.0
+margin_right = 726.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 171.819, 80 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 10 )
+
+[node name="Tbutton_bexit" type="TextureButton" parent="VBoxContainer/header"]
+margin_left = 730.0
+margin_right = 780.0
+margin_bottom = 50.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 5 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 54.0
+margin_right = 780.0
+margin_bottom = 615.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 100
+custom_constants/margin_top = 50
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
+margin_left = 100.0
+margin_top = 50.0
+margin_right = 680.0
+margin_bottom = 511.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="content" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+margin_top = 230.0
+margin_right = 580.0
+margin_bottom = 230.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="display_test_line_preset1" parent="VBoxContainer/MarginContainer/ScrollContainer/content" instance=ExtResource( 3 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 580.0
+margin_bottom = 20.0
+size_flags_horizontal = 1
+
+[node name="display_test_line_preset2" parent="VBoxContainer/MarginContainer/ScrollContainer/content" instance=ExtResource( 3 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 580.0
+margin_bottom = 20.0
+size_flags_horizontal = 5
+
+[node name="bottom_bar" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 547.0
+margin_right = 780.0
+margin_bottom = 602.0
+size_flags_vertical = 0
+
+[node name="ButtonPlay" type="Button" parent="VBoxContainer/bottom_bar"]
+margin_left = 343.0
+margin_right = 436.0
+margin_bottom = 55.0
+rect_pivot_offset = Vector2( 171.819, 80 )
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 1 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="footer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 619.0
+margin_right = 780.0
+margin_bottom = 620.0
+size_flags_horizontal = 3
+
+[node name="ButtonTest1" type="Button" parent="VBoxContainer/footer"]
+visible = false
+margin_right = 68.0
+margin_bottom = 55.0
+text = "test json"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonTest2" type="Button" parent="VBoxContainer/footer"]
+visible = false
+margin_right = 80.0
+margin_bottom = 55.0
+text = "add preset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_footer" type="Label" parent="VBoxContainer/footer"]
+margin_right = 780.0
+margin_bottom = 1.0
+size_flags_horizontal = 3
+text = "text_footer"
+align = 1
+
+[node name="ButtonScores" type="Button" parent="VBoxContainer/footer"]
+visible = false
+margin_left = 73.0
+margin_right = 211.0
+margin_bottom = 55.0
+rect_pivot_offset = Vector2( 171.819, 80 )
+custom_fonts/font = SubResource( 1 )
+text = "Scores"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="VBoxContainer/header/Tbutton_options" to="." method="_on_ButtonOptions_pressed"]
+[connection signal="pressed" from="VBoxContainer/header/Tbutton_bexit" to="." method="_on_Tbutton_bexit_pressed"]
+[connection signal="level_button" from="VBoxContainer/MarginContainer/ScrollContainer/content/display_test_line_preset1" to="." method="launch_game"]
+[connection signal="pressed" from="VBoxContainer/bottom_bar/ButtonPlay" to="." method="_on_ButtonPlay_pressed"]
+[connection signal="pressed" from="VBoxContainer/footer/ButtonTest1" to="." method="_on_ButtonTest1_pressed"]
+[connection signal="pressed" from="VBoxContainer/footer/ButtonTest2" to="." method="_on_ButtonTest2_pressed"]
+[connection signal="pressed" from="VBoxContainer/footer/ButtonScores" to="." method="_on_ButtonScores_pressed"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/ui_assets/backgrounds/fond_arc_en_ciell.jpg" type="Texture" id=1]
+[ext_resource path="res://game/game_items/bg.gd" type="Script" id=2]
+
+[node name="Bg" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="BgRect" type="TextureRect" parent="."]
+margin_right = 1408.0
+margin_bottom = 800.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

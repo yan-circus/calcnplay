@@ -1,0 +1,155 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://player_edit.gd" type="Script" id=1]
+[ext_resource path="res://assets/icons/avatars/cheekscreature.png" type="Texture" id=2]
+
+[node name="Player_edit" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -6.31824
+margin_top = 5.36359
+margin_right = -75.3182
+margin_bottom = 5.36359
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 102.0
+margin_top = 22.0
+margin_right = 621.0
+margin_bottom = 462.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+margin_right = 507.0
+margin_bottom = 706.0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 9
+custom_constants/hseparation = 14
+columns = 3
+
+[node name="Button" type="Button" parent="ScrollContainer/GridContainer"]
+margin_right = 159.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Button2" type="Button" parent="ScrollContainer/GridContainer"]
+margin_left = 173.0
+margin_right = 332.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Button3" type="Button" parent="ScrollContainer/GridContainer"]
+margin_left = 346.0
+margin_right = 505.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Button4" type="Button" parent="ScrollContainer/GridContainer"]
+margin_top = 143.0
+margin_right = 159.0
+margin_bottom = 277.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Button5" type="Button" parent="ScrollContainer/GridContainer"]
+margin_left = 173.0
+margin_top = 143.0
+margin_right = 332.0
+margin_bottom = 277.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Button6" type="Button" parent="ScrollContainer/GridContainer"]
+margin_left = 346.0
+margin_top = 143.0
+margin_right = 505.0
+margin_bottom = 277.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Button7" type="Button" parent="ScrollContainer/GridContainer"]
+margin_top = 286.0
+margin_right = 159.0
+margin_bottom = 420.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Button8" type="Button" parent="ScrollContainer/GridContainer"]
+margin_left = 173.0
+margin_top = 286.0
+margin_right = 332.0
+margin_bottom = 420.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Button9" type="Button" parent="ScrollContainer/GridContainer"]
+margin_left = 346.0
+margin_top = 286.0
+margin_right = 505.0
+margin_bottom = 420.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Button10" type="Button" parent="ScrollContainer/GridContainer"]
+margin_top = 429.0
+margin_right = 159.0
+margin_bottom = 563.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Button11" type="Button" parent="ScrollContainer/GridContainer"]
+margin_left = 173.0
+margin_top = 429.0
+margin_right = 332.0
+margin_bottom = 563.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Button12" type="Button" parent="ScrollContainer/GridContainer"]
+margin_left = 346.0
+margin_top = 429.0
+margin_right = 505.0
+margin_bottom = 563.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Button13" type="Button" parent="ScrollContainer/GridContainer"]
+margin_top = 572.0
+margin_right = 159.0
+margin_bottom = 706.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )
+
+[node name="Button14" type="Button" parent="ScrollContainer/GridContainer"]
+margin_left = 173.0
+margin_top = 572.0
+margin_right = 332.0
+margin_bottom = 706.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+icon = ExtResource( 2 )

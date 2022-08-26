@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/game_assets/graphs/question/quest_display1.png" type="Texture" id=1]
+[ext_resource path="res://game/game_items/PuzzlePart.gd" type="Script" id=2]
+
+[node name="PuzzlePart" type="Node2D" groups=["puzzle_part"]]
+script = ExtResource( 2 )
+
+[node name="PartRect" type="TextureRect" parent="."]
+visible = false
+margin_right = 1366.0
+margin_bottom = 768.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

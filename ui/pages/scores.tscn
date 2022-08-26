@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/pages/scores.gd" type="Script" id=1]
+[ext_resource path="res://ui/ui_assets/icons/revenir.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/Dyuthi.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 3 )
+
+[node name="Scores" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonExit" type="Button" parent="."]
+anchor_left = -0.044
+anchor_top = 0.021
+anchor_right = -0.044
+anchor_bottom = 0.021
+margin_left = -47.728
+margin_top = -39.206
+margin_right = 92.272
+margin_bottom = 94.794
+rect_scale = Vector2( 0.4, 0.4 )
+rect_pivot_offset = Vector2( 171.819, 80 )
+custom_fonts/font = SubResource( 1 )
+icon = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelTitle" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -118.0
+margin_right = 118.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 2 )
+text = "Hi-scores"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ButtonExit" to="." method="_on_ButtonExit_pressed"]
