@@ -52,10 +52,10 @@ margin_right = 780.0
 margin_bottom = 50.0
 
 [node name="LabelTitle" type="Label" parent="VBoxContainer/header"]
+margin_top = 8.0
 margin_right = 672.0
-margin_bottom = 49.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
 text = "main screen"
 align = 1
 __meta__ = {
@@ -64,10 +64,10 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="VBoxContainer/header"]
 visible = false
-margin_left = 844.0
-margin_top = 18.0
-margin_right = 895.0
-margin_bottom = 32.0
+margin_left = 580.0
+margin_top = 10.0
+margin_right = 672.0
+margin_bottom = 40.0
 text = "OPtions"
 align = 1
 
@@ -91,7 +91,7 @@ texture_hover = ExtResource( 5 )
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 54.0
 margin_right = 780.0
-margin_bottom = 615.0
+margin_bottom = 583.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 100
@@ -103,14 +103,14 @@ custom_constants/margin_bottom = 50
 margin_left = 100.0
 margin_top = 50.0
 margin_right = 680.0
-margin_bottom = 511.0
+margin_bottom = 479.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="content" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
-margin_top = 230.0
+margin_top = 214.0
 margin_right = 580.0
-margin_bottom = 230.0
+margin_bottom = 214.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 
@@ -119,15 +119,16 @@ visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 580.0
-margin_bottom = 20.0
+margin_bottom = 39.0
 size_flags_horizontal = 1
 
 [node name="display_test_line_preset2" parent="VBoxContainer/MarginContainer/ScrollContainer/content" instance=ExtResource( 3 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_top = 43.0
 margin_right = 580.0
-margin_bottom = 20.0
+margin_bottom = 82.0
 size_flags_horizontal = 5
 
 [node name="bottom_bar" type="VBoxContainer" parent="VBoxContainer"]
@@ -150,7 +151,7 @@ __meta__ = {
 }
 
 [node name="footer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 619.0
+margin_top = 587.0
 margin_right = 780.0
 margin_bottom = 620.0
 size_flags_horizontal = 3
@@ -175,7 +176,7 @@ __meta__ = {
 
 [node name="lbl_footer" type="Label" parent="VBoxContainer/footer"]
 margin_right = 780.0
-margin_bottom = 1.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 text = "text_footer"
 align = 1
@@ -194,7 +195,6 @@ __meta__ = {
 
 [connection signal="pressed" from="VBoxContainer/header/Tbutton_options" to="." method="_on_ButtonOptions_pressed"]
 [connection signal="pressed" from="VBoxContainer/header/Tbutton_bexit" to="." method="_on_Tbutton_bexit_pressed"]
-[connection signal="level_button" from="VBoxContainer/MarginContainer/ScrollContainer/content/display_test_line_preset1" to="." method="launch_game"]
 [connection signal="pressed" from="VBoxContainer/bottom_bar/ButtonPlay" to="." method="_on_ButtonPlay_pressed"]
 [connection signal="pressed" from="VBoxContainer/footer/ButtonTest1" to="." method="_on_ButtonTest1_pressed"]
 [connection signal="pressed" from="VBoxContainer/footer/ButtonTest2" to="." method="_on_ButtonTest2_pressed"]

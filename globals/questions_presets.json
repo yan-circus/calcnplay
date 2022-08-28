@@ -21,7 +21,25 @@
             "percent_speed-level5":100
         },
         {
-                "id":2,
+            "id":2,
+            "name":"addition 1-100",
+            "type":"calculated_by_computer",
+            "comment":"...",
+            "operators":"+",
+            "max_values":[
+                100,
+                100
+            ],
+            "min_values":[
+                
+            ],
+            "max_result":100,
+            "percent_speed-level1":0,
+            "percent_speed-level2":10,
+            "percent_speed-level3":30
+        },
+        {
+                "id":3,
                 "name":"additions 1-10 result max10",
                 "type":"calculated_by_computer",
                 "comment":"...",
@@ -34,6 +52,68 @@
                     
                 ],
                 "max_result":10,
+                "percent_speed-level1":0,
+                "percent_speed-level2":10,
+                "percent_speed-level3":30,
+                "percent_speed-level4":60,
+                "percent_speed-level5":100
+            },
+        {
+                "id":4,
+                "name":"table de 8",
+                "type":"calculated_by_computer",
+                "comment":"...",
+                "operators":"*",
+                "max_values":[
+                    8,
+                    10
+                ],
+                "min_values":[
+                	8,
+                    	1  
+                ],
+                "max_result":0,
+                "percent_speed-level1":0,
+                "percent_speed-level2":10,
+                "percent_speed-level3":30,
+                "percent_speed-level4":60,
+                "percent_speed-level5":100
+            },
+         {
+                "id":5,
+                "name":"soustractions 1-10",
+                "type":"calculated_by_computer",
+                "comment":"...",
+                "operators":"-",
+                "max_values":[
+                    10,
+                    10
+                ],
+                "min_values":[
+                    
+                ],
+                "max_result":0,
+                "percent_speed-level1":0,
+                "percent_speed-level2":10,
+                "percent_speed-level3":30,
+                "percent_speed-level4":60,
+                "percent_speed-level5":100
+            },
+         {
+                "id":6,
+                "name":"division table 5",
+                "type":"calculated_by_computer",
+                "comment":"...",
+                "operators":"/",
+                "max_values":[
+                    5,
+                    10
+                ],
+                "min_values":[
+                    5,
+                    1
+                ],
+                "max_result":0,
                 "percent_speed-level1":0,
                 "percent_speed-level2":10,
                 "percent_speed-level3":30,

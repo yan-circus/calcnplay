@@ -80,10 +80,20 @@ func _input(event):
 	if Input.is_action_pressed("9"):
 		user_key = "9"
 	if user_key and is_waiting_answer:
-		list_user_keys.append(user_key)
-		print("touche: ",user_key, "liste keys: ", list_user_keys)
-		check_user_answer()
+		get_key(user_key)
 		
+
+func get_key_numpad():
+	var key_numpad = $Numpad.key_bt
+	get_key(key_numpad)
+	
+
+func get_key(user_key):
+	list_user_keys.append(user_key)
+	print("touche: ",user_key, "liste keys: ", list_user_keys)
+	check_user_answer()
+	
+	
 func check_user_answer():
 	current_user_answer = ""
 	for i in list_user_keys:
@@ -299,3 +309,5 @@ func evaluate_quest_timer():
 	print("*******question_speed*************",question_speed) 
 	return quest_time
 
+func print_hello():
+	print("HELLLLLLLOOOOOO")

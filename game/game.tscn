@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/game.gd" type="Script" id=1]
 [ext_resource path="res://game/game_items/HUD.tscn" type="PackedScene" id=2]
@@ -6,9 +6,10 @@
 [ext_resource path="res://game/game_items/bg.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/game_assets/sounds/cling.wav" type="AudioStream" id=5]
 [ext_resource path="res://game/game_items/puzzle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/game_items/numpad.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 704, 32 )
+extents = Vector2( 704, 44 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -47,17 +48,17 @@ __meta__ = {
 collision_layer = 3
 
 [node name="ColorRect" type="ColorRect" parent="Area2D"]
-margin_left = 1.0
-margin_top = 704.0
+anchor_right = 1.0
+margin_left = -7.0
 margin_right = 1408.0
-margin_bottom = 768.0
+margin_bottom = 54.0
 color = Color( 0.556863, 0.0862745, 0.384314, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 704, 736 )
+position = Vector2( 704, 724 )
 shape = SubResource( 1 )
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
@@ -66,9 +67,12 @@ stream = ExtResource( 3 )
 [node name="GoodAnswerSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 
+[node name="Numpad" parent="." instance=ExtResource( 7 )]
+
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="QuestTimer" to="." method="_on_quest_timer_timeout"]
 [connection signal="timeout" from="DisplayQuestionTimer" to="." method="_on_DisplayQuestionTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="timeout" from="delayActiveQuestionTimer" to="." method="_on_delayActiveQuestionTimer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="button_numpad_pressed" from="Numpad" to="." method="get_key_numpad"]

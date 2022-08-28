@@ -1,5 +1,5 @@
 extends Control
-signal level_button
+#signal level_button
 var id_preset = 0
 
 
