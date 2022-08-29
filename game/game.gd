@@ -34,6 +34,11 @@ var list_user_keys = []
 
 func _ready():
 	calculate_question_speed()
+	if GlobalVariables.display_numpad:
+		$Numpad.show_numpad()
+	else:
+		$Numpad.hide_numpad()
+	
 	$Bg.init("res://game/game_assets/backgrounds/")
 	$Puzzle.create_the_puzzle()
 	print("#################################")

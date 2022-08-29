@@ -56,3 +56,9 @@ func _on_button_key9_pressed():
 func one_numpad_button_pressed():
 	emit_signal("button_numpad_pressed")
 
+func show_numpad():
+	$Vbox_numpad.visible = true
+	
+func hide_numpad():
+	$Vbox_numpad.visible = false
+	

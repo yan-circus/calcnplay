@@ -3,6 +3,8 @@ extends Node
 
 var sound_state = true
 var music_state = false
+var display_numpad = false
+
 
 
 var level = 0

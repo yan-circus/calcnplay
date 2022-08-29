@@ -65,15 +65,15 @@ text = "OPtions"
 align = 1
 
 [node name="content" type="VBoxContainer" parent="VBoxContainer"]
-margin_left = 298.0
-margin_top = 267.0
-margin_right = 482.0
-margin_bottom = 369.0
+margin_left = 280.0
+margin_top = 241.0
+margin_right = 499.0
+margin_bottom = 396.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
 [node name="CheckButtonSound" type="CheckButton" parent="VBoxContainer/content"]
-margin_right = 184.0
+margin_right = 219.0
 margin_bottom = 49.0
 custom_fonts/font = SubResource( 1 )
 pressed = true
@@ -85,11 +85,22 @@ __meta__ = {
 
 [node name="CheckButtonMusic" type="CheckButton" parent="VBoxContainer/content"]
 margin_top = 53.0
-margin_right = 184.0
+margin_right = 219.0
 margin_bottom = 102.0
 custom_fonts/font = SubResource( 1 )
 action_mode = 0
 text = "Music"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButtonNumpad" type="CheckButton" parent="VBoxContainer/content"]
+margin_top = 106.0
+margin_right = 219.0
+margin_bottom = 155.0
+custom_fonts/font = SubResource( 1 )
+action_mode = 0
+text = "Numpad"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -107,3 +118,4 @@ text = "text_footer"
 [connection signal="pressed" from="VBoxContainer/header/Tbutton_back" to="." method="_on_Tbutton_back_pressed"]
 [connection signal="toggled" from="VBoxContainer/content/CheckButtonSound" to="." method="_on_CheckButtonSound_toggled"]
 [connection signal="toggled" from="VBoxContainer/content/CheckButtonMusic" to="." method="_on_CheckButtonMusic_toggled"]
+[connection signal="toggled" from="VBoxContainer/content/CheckButtonNumpad" to="." method="_on_CheckButtonNumpad_toggled"]
