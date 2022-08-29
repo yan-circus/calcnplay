@@ -3,24 +3,28 @@ var path = "user://questions_presets.json"
 
 # The default values
 var default_questions = {
-	"id":1,
-	"name":"Table de multiplication 1-10",
-	"type":"calculated_by_computer",
-	"comment":"...",
-	"operators":"*",
-	"max_values":[
-	    10,
-	    10
-	],
-	"min_values":[
-	    
-	],
-	"max_result":0,
-	"percent_speed-level1":0,
-	"percent_speed-level2":10,
-	"percent_speed-level3":30,
-	"percent_speed-level4":60,
-	"percent_speed-level5":100
+    "presets":[
+        {
+		"id":1,
+		"name":"Table de multiplication 1-10",
+		"type":"calculated_by_computer",
+		"comment":"...",
+		"operators":"*",
+		"max_values":[
+		    10,
+		    10
+		],
+		"min_values":[
+		    
+		],
+		"max_result":0,
+		"percent_speed-level1":0,
+		"percent_speed-level2":10,
+		"percent_speed-level3":30,
+		"percent_speed-level4":60,
+		"percent_speed-level5":100
+	}
+	]
 }
 
 var data_questions = { }
