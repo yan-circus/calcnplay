@@ -1,0 +1,78 @@
+************
+raodmap.txt
+date:		2022/08/29
+version: 	0.01
+
+
+Ce documents est un récapitulatif simplifié des choses restantes à faire sur le développement de calc&play.
+
+
+*************************************
+fonctionnement du jeu:
+*************************************
+PRIORITÉ 1:
+Cette partie va regrouper les élements liés directement à l'execution du jeu. par ex: bug dans le jeu, etc...
+
+- régler le problème des erreurs occasionnelles de freequeue(). parfois le jeu essaye d'acceder à un objet quest alors que celui-ci n'existe plus.
+
+- temps trop long pour l'affichage de la question suivante lorsqu'on répond rapidement. surtout quand la vitesse est lente. pour le moment c'est l'objet QuestTimer qui gére l'apparition des question. Cette fréquence est réglée par un calcul en rapport de les valeurs "percent_speed-level" écrite dans le fichier questions_presets.json. l'idée serat de modifier temporairement la fréquence dans ce cas là.
+
+- enlever les boutons "start" et "quit" de l'HUD et faire en sorte que l'interface reste sur le score final jusqu'à l'appui d'une touche qui aurait comme effet de ramener à la page pre-game.
+
+
+*************************************
+interface:
+*************************************
+PRIORITÉ 1:
+- amèliorer les thèmes......
+
+- changer les images des boutons retour et la croix de fermeture
+ 
+- mémoriser la sélection du joueur. l'idée serait que lorsqu'un joueur a fini une partie et qu'il revienne à la page pre-game son joueur soit tjs sélectionné. idem lors d'un changement de preset.
+
+PRIORITÉ 2:
+- gérer les couleurs pour les utilisateurs. L'utilisateur pourra choisir parmi un choix de couleurs. Cette couleur s'affichera derrière l'avatar et sera reprise par exemple dans la couleur des pièces de puzzle.
+
+
+PRIORITÉ 3:
+-ajout d'une page édition pour les utilisateurs. cette page pourra permettre d'éditer et de créer des utilisateurs. Dans un 1er temps la liste des avatars se fera parmi les images internes du jeu.
+
+-ajout d'une page statitistique. cette page permettrait d'afficher par exemple les meilleurs scores par preset, le recap sur les parties jouées par un utilisateur, etc. 
+Cette partie ne pourra être dévellopée que lorsque la partie sauvegarde des partie sera en place.
+
+-gestion des thèmes dans les options. cela pourrait aller du choix des couleurs de l'interface, aux choix des backgrounds pendant le jeu (nature, chevaux, mangas, chevaux, véhicules, chevaux, etc...)
+
+
+*************************************
+fonctionalités:
+*************************************
+PRIORITÉ 4:
+-mode multi-joueurs. l'idée serait un mode multi-joueur simple ou chacun joue à son tour et passe la main quand il perd une vie. mais... cela demande d'enregistrer l'état complet du jeu à un moment prècis pour pouvoir passer d'un joueur à l'autre...
+
+
+*************************************
+presets:
+*************************************
+PRIORITÉ 1:
+-ajout d'un champ satus. l'idée qu'un preset puisse être par exemple à l'état de test puis passer à l'état de production. cela pourrait permettre de créer des règles sur ce qu'il se passera des scores enregistrés par rapport à un preset si celui-ci est modifié. par ex si un joueur "x" à fait un score de 222 mais qu'ensuite le preset a été rallenti....? au pire je me dis que le champ status pourra tjs servir ;)
+
+
+*************************************
+sauvegardes:
+*************************************
+PRIORITÉ 1:
+à la fin de la partie sauvegarde du scores, nom utilisateur, date et heure, durée de la partie, numéro de carte bancaire...
+dans un premier temps j'imagine faire cette sauvegarde de manière locale. peut-être en csv pour pouvoir facilement réutiliser les données dans librecalc par ex.
+
+PRIORITÉ 3:
+sytème des sauvegardes sur le réseau pour pourvoir retrouver les scores d'un utilisateur peut importe à partir de quel appareil il jouera.
+
+*************************************
+autres:
+*************************************
+PRIORITÉ 2:
+-tester sur tablette et téléphone;
+
+PRIORITÉ 4:
+-une version web?
+
