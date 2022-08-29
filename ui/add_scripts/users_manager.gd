@@ -7,11 +7,15 @@ var data_users = { }
 var list_users = []
 
 var default_questions = {
-	"id":1,
-	"name":"xxx",
-	"image":"fury1.png",
-	"color":0,
-	"comment":"*"
+	"users":[
+        {
+		"id":1,
+		"name":"xxx",
+		"image":"fury1.png",
+		"color":0,
+		"comment":"*"
+		}
+		]
 }
 
 
