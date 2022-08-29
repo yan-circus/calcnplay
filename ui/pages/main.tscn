@@ -45,12 +45,12 @@ __meta__ = {
 }
 
 [node name="header" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 780.0
+margin_right = 1346.0
 margin_bottom = 50.0
 
 [node name="LabelTitle" type="Label" parent="VBoxContainer/header"]
 margin_top = 8.0
-margin_right = 672.0
+margin_right = 1238.0
 margin_bottom = 41.0
 size_flags_horizontal = 3
 text = "main screen"
@@ -69,8 +69,8 @@ text = "OPtions"
 align = 1
 
 [node name="Tbutton_options" type="TextureButton" parent="VBoxContainer/header"]
-margin_left = 676.0
-margin_right = 726.0
+margin_left = 1242.0
+margin_right = 1292.0
 margin_bottom = 50.0
 rect_pivot_offset = Vector2( 171.819, 80 )
 texture_normal = ExtResource( 11 )
@@ -78,8 +78,8 @@ texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 10 )
 
 [node name="Tbutton_bexit" type="TextureButton" parent="VBoxContainer/header"]
-margin_left = 730.0
-margin_right = 780.0
+margin_left = 1296.0
+margin_right = 1346.0
 margin_bottom = 50.0
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
@@ -87,8 +87,8 @@ texture_hover = ExtResource( 5 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 54.0
-margin_right = 780.0
-margin_bottom = 583.0
+margin_right = 1346.0
+margin_bottom = 711.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 100
@@ -99,15 +99,15 @@ custom_constants/margin_bottom = 50
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
 margin_left = 100.0
 margin_top = 50.0
-margin_right = 680.0
-margin_bottom = 479.0
+margin_right = 1246.0
+margin_bottom = 607.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="content" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
-margin_top = 214.0
-margin_right = 580.0
-margin_bottom = 214.0
+margin_top = 278.0
+margin_right = 1146.0
+margin_bottom = 278.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 
@@ -148,9 +148,9 @@ __meta__ = {
 }
 
 [node name="footer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 587.0
-margin_right = 780.0
-margin_bottom = 620.0
+margin_top = 715.0
+margin_right = 1346.0
+margin_bottom = 748.0
 size_flags_horizontal = 3
 
 [node name="ButtonTest1" type="Button" parent="VBoxContainer/footer"]
@@ -172,7 +172,7 @@ __meta__ = {
 }
 
 [node name="lbl_footer" type="Label" parent="VBoxContainer/footer"]
-margin_right = 780.0
+margin_right = 1346.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
 text = "text_footer"

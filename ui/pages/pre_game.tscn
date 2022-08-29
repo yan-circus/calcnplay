@@ -41,7 +41,7 @@ __meta__ = {
 }
 
 [node name="header" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 780.0
+margin_right = 1346.0
 margin_bottom = 50.0
 
 [node name="Tbutton_back" type="TextureButton" parent="VBoxContainer/header"]
@@ -62,10 +62,10 @@ text = "coucou"
 align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_left = 390.0
-margin_top = 239.0
-margin_right = 390.0
-margin_bottom = 239.0
+margin_left = 673.0
+margin_top = 303.0
+margin_right = 673.0
+margin_bottom = 303.0
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
@@ -96,13 +96,13 @@ margin_right = 128.0
 margin_bottom = 146.0
 
 [node name="bottom_bar" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 428.0
-margin_right = 780.0
-margin_bottom = 583.0
+margin_top = 556.0
+margin_right = 1346.0
+margin_bottom = 711.0
 size_flags_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/bottom_bar"]
-margin_right = 780.0
+margin_right = 1346.0
 margin_bottom = 155.0
 custom_constants/margin_right = 100
 custom_constants/margin_top = 0
@@ -111,7 +111,7 @@ custom_constants/margin_bottom = 100
 
 [node name="ButtonPlay" type="Button" parent="VBoxContainer/bottom_bar/MarginContainer"]
 margin_left = 100.0
-margin_right = 680.0
+margin_right = 1246.0
 margin_bottom = 55.0
 rect_pivot_offset = Vector2( 171.819, 80 )
 custom_fonts/font = SubResource( 2 )
@@ -121,10 +121,10 @@ __meta__ = {
 }
 
 [node name="footer" type="HBoxContainer" parent="VBoxContainer"]
-margin_left = 314.0
-margin_top = 587.0
-margin_right = 466.0
-margin_bottom = 620.0
+margin_left = 597.0
+margin_top = 715.0
+margin_right = 749.0
+margin_bottom = 748.0
 size_flags_horizontal = 4
 
 [node name="lbl_footer" type="Label" parent="VBoxContainer/footer"]

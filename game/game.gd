@@ -45,6 +45,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	print(screen_size.x)
 	randomize()
+	new_game()
 	
 func calculate_question_speed():
 	var key = "percent_speed-level" + str(GlobalVariables.level)
