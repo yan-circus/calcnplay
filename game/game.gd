@@ -309,7 +309,7 @@ func update_display_wrong_timer():
 
 func evaluate_quest_timer():
 	#petit calcul pour que la fréquece des questions soit légerement plus élevée que la durée de chute
-	var quest_time = (1.0/question_speed)* 300
+	var quest_time = (1.0/(question_speed+1))* 300
 	print("*******QUESTION TIMER*************",quest_time) 
 	print("*******question_speed*************",question_speed) 
 	return quest_time

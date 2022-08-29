@@ -23,10 +23,12 @@ UsersManager="*res://ui/add_scripts/users_manager.gd"
 
 [display]
 
-window/size/width=800
-window/size/height=640
+window/size/width=1366
+window/size/height=768
 window/size/resizable=false
 window/size/fullscreen=true
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 
