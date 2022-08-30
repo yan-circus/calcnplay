@@ -47,13 +47,35 @@ func _ready():
 	print(screen_size.x)
 	randomize()
 	new_game()
+
+func new_game():
+	print("new game")
+	is_playing = true
+	$Bg.choose_background()
+	$Puzzle.display_all_parts()
+	score = 0
+	nb_lives = nb_lives_init
+	question_speed = question_speed_init
+	$QuestTimer.wait_time = evaluate_quest_timer()
+	#$QuestTimer.wait_time = 5
+	$DisplayQuestionTimer.wait_time = display_quesion_timer_wait_time_init
+	
+	display_user_answer()
+	$StartTimer.start()
+	$HUD.update_score(score)
+	$HUD.update_lives(nb_lives)
+	$HUD.show_message("Get Ready")
+	
+func _on_StartTimer_timeout():
+	pick_a_question()
+	$QuestTimer.start()
+	print("début de la partie")
 	
 func calculate_question_speed():
 	var key = "percent_speed-level" + str(GlobalVariables.level)
 	var preset_speed = GlobalVariables.current_preset[key]
 	var ratio = 200
 	question_speed_init = int((preset_speed+1)/100 * ratio)
-	print("#################################")
 	print("#################################")
 	print("*******question_speed*************",question_speed_init) 
 	print("#################################")
@@ -102,12 +124,6 @@ func get_key(user_key):
 		print("touche: ",user_key, "liste keys: ", list_user_keys)
 		check_user_answer()
 
-func get_questions_count():
-	var q = get_list_questions()
-	var nb_q  = len(q)
-	return nb_q
-	
-	
 func check_user_answer():
 	current_user_answer = ""
 	for i in list_user_keys:
@@ -137,9 +153,7 @@ func right_answer():
 	if nb_qst == 1:
 		questTimer_next_step(0.5)
 		
-		
-	current_body.queue_free()
-	
+	current_body.queue_free()	#efface la question
 	$delayActiveQuestionTimer.start()
 
 func wrong_answer():
@@ -154,105 +168,10 @@ func wrong_answer():
 	#print("colision: ",body)
 	$DisplayQuestionTimer.start()
 
-func questTimer_next_step(time_sec):
-	#permet de racourcir le temps restant à time_sec 
-	# afin de déclencher le timeout plus rapidement
-	$QuestTimer.stop()
-	$QuestTimer.wait_time = time_sec
-	$QuestTimer.start()
-	$QuestTimer.wait_time = current_QuestTimer_wait_time
-	
 func display_user_answer():
 	var format_user_answer = format_user_answer(current_user_answer, current_expected_answer)
 	$HUD.update_user_answer(format_user_answer)
 	
-func format_user_answer(user_anwser, expected_answer):
-	#dans la zone de saisie utilisateur.
-	#affiche des tirets  à la place des caractères pas encore saisis par l'utilisateur.
-	#cela aide le joueur à savoir comboien de digits sont attendus.
-	#par exemple si la réponse attendue est 134 la zone de saisie affichera d'abord '---' puis par ex '1--' puis '13-' puis '134'.
-	var format_user_answer =""
-	var len_exp_ans = expected_answer.length()
-	var len_user_ans = user_anwser.length()
-	var nb_trema = len_exp_ans - len_user_ans
-	format_user_answer = "-".repeat(nb_trema) + user_anwser
-	return format_user_answer
-
-
-func _on_quest_timer_timeout():
-	pick_a_question()
-
-func position_the_question(var qsz):
-	var posx = (randf() * (screen_size.x - qsz.x)) +  (qsz.x /2)
-	return posx
-
-func new_game():
-	print("new game")
-	is_playing = true
-	$Bg.choose_background()
-	$Puzzle.display_all_parts()
-	score = 0
-	nb_lives = nb_lives_init
-	question_speed = question_speed_init
-	$QuestTimer.wait_time = evaluate_quest_timer()
-	#$QuestTimer.wait_time = 5
-	$DisplayQuestionTimer.wait_time = display_quesion_timer_wait_time_init
-	
-	display_user_answer()
-	$StartTimer.start()
-	$HUD.update_score(score)
-	$HUD.update_lives(nb_lives)
-	$HUD.show_message("Get Ready")
-
-func _on_StartTimer_timeout():
-	pick_a_question()
-	$QuestTimer.start()
-	print("début de la partie")
-	
-func choose_question():
-	#a+b = c
-	var max_result = 10
-	var expected_answer = ""
-	var choosen_question = ""
-	var q=[0,0,0]
-	var result = -1
-	while result <0 or result > 10:
-		q[0] = int(rand_range(1,9)) 	#opérande a
-		q[1] = int(rand_range(1,9)) 	#opérande b
-		q[2]= q[0] + q[1]			 	#résultat c
-		result = q[2]
-	
-	expected_answer = str(q[2])
-	choosen_question = str(q[0]) + "+" + str(q[1])
-	var question_datas = [expected_answer, choosen_question]
-	print ("choose question : ",question_datas)
-	return question_datas
-	
-func choose_multiplication_question():
-	#a*b = c
-	var expected_answer = ""
-	var choosen_question = ""
-	var q=[0,0,0]
-	q[0] = int(rand_range(1,10)) 	#opérande a
-	q[1] = int(rand_range(1,11)) 	#opérande b
-	q[2]= q[0] * q[1]			 	#résultat c
-	expected_answer = str(q[2])
-	choosen_question = str(q[0]) + "x" + str(q[1])
-	var question_datas = [expected_answer, choosen_question]
-	print ("choose question : ",question_datas)
-	return question_datas
-
-func _on_Area2D_body_entered(body):
-	current_body = body
-	wrong_answer()
-	
-func game_over():
-	is_playing = false
-	$QuestTimer.stop()
-	get_tree().call_group("questions", "queue_free")
-	$HUD.show_game_over()
-	$HUD.update_user_answer("")
-
 func _on_DisplayQuestionTimer_timeout():
 	questTimer_next_step(0.5)
 	current_body.queue_free()
@@ -263,9 +182,22 @@ func _on_DisplayQuestionTimer_timeout():
 		$HUD.update_user_answer("")
 		$delayActiveQuestionTimer.start()
 
-func _on_delayActiveQuestionTimer_timeout():
-	select_question_to_active()
+func _on_Area2D_body_entered(body):
+	#ce déclenche quand la question touche le sol
+	current_body = body
+	wrong_answer()
+	
+func _on_quest_timer_timeout():
+	pick_a_question()
 
+func questTimer_next_step(time_sec):
+	#permet de racourcir le temps restant à time_sec 
+	# afin de déclencher le timeout plus rapidement
+	$QuestTimer.stop()
+	$QuestTimer.wait_time = time_sec
+	$QuestTimer.start()
+	$QuestTimer.wait_time = current_QuestTimer_wait_time
+	
 func pick_a_question():
 	#instanciation de l'objet question.
 	nb_question += 1
@@ -297,6 +229,51 @@ func pick_a_question():
 		print("ACTIVATION LORS DE PICK_A_QUESTION")
 		select_question_to_active()
 
+func position_the_question(var qsz):
+	var posx = (randf() * (screen_size.x - qsz.x)) +  (qsz.x /2)
+	return posx
+	
+func choose_question():
+	#a+b = c
+	var max_result = 10
+	var expected_answer = ""
+	var choosen_question = ""
+	var q=[0,0,0]
+	var result = -1
+	while result <0 or result > 10:
+		q[0] = int(rand_range(1,9)) 	#opérande a
+		q[1] = int(rand_range(1,9)) 	#opérande b
+		q[2]= q[0] + q[1]			 	#résultat c
+		result = q[2]
+	
+	expected_answer = str(q[2])
+	choosen_question = str(q[0]) + "+" + str(q[1])
+	var question_datas = [expected_answer, choosen_question]
+	print ("choose question : ",question_datas)
+	return question_datas
+
+func format_user_answer(user_anwser, expected_answer):
+	#dans la zone de saisie utilisateur.
+	#affiche des tirets  à la place des caractères pas encore saisis par l'utilisateur.
+	#cela aide le joueur à savoir comboien de digits sont attendus.
+	#par exemple si la réponse attendue est 134 la zone de saisie affichera d'abord '---' puis par ex '1--' puis '13-' puis '134'.
+	var format_user_answer =""
+	var len_exp_ans = expected_answer.length()
+	var len_user_ans = user_anwser.length()
+	var nb_trema = len_exp_ans - len_user_ans
+	format_user_answer = "-".repeat(nb_trema) + user_anwser
+	return format_user_answer
+	
+func game_over():
+	is_playing = false
+	$QuestTimer.stop()
+	get_tree().call_group("questions", "queue_free")
+	$HUD.show_game_over()
+	$HUD.update_user_answer("")
+
+func _on_delayActiveQuestionTimer_timeout():
+	select_question_to_active()
+
 func select_question_to_active():
 	#cette fonction va activer la bonne question (celle la plus basse)
 	var questions = get_list_questions()
@@ -305,10 +282,6 @@ func select_question_to_active():
 		print("questions: ", len(questions) , questions)
 		active_the_question(qst)
 		
-func get_list_questions():
-	var questions = get_tree().get_nodes_in_group("questions")
-	return questions
-	
 func active_the_question(qst):
 	current_body = qst
 	qst.set_animation("active")
@@ -319,6 +292,15 @@ func active_the_question(qst):
 	list_user_keys = []
 	is_waiting_answer = true
 	display_user_answer()
+
+func get_list_questions():
+	var questions = get_tree().get_nodes_in_group("questions")
+	return questions
+	
+func get_questions_count():
+	var q = get_list_questions()
+	var nb_q  = len(q)
+	return nb_q
 	
 func update_game_difficultie():
 	question_speed = question_speed * 1.2
@@ -340,5 +322,3 @@ func evaluate_quest_timer():
 	current_QuestTimer_wait_time = quest_time
 	return quest_time
 
-func print_hello():
-	print("HELLLLLLLOOOOOO")
