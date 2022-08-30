@@ -95,9 +95,19 @@ func get_key_numpad():
 	
 
 func get_key(user_key):
-	list_user_keys.append(user_key)
-	print("touche: ",user_key, "liste keys: ", list_user_keys)
-	check_user_answer()
+	var is_qst = check_quest_exist()
+	if is_qst:
+		list_user_keys.append(user_key)
+		print("touche: ",user_key, "liste keys: ", list_user_keys)
+		check_user_answer()
+
+func check_quest_exist():
+	var exist = true
+	var q = get_list_questions()
+	var nb_q  = len(q)
+	if nb_q ==0:
+		exist = false
+	return exist
 	
 	
 func check_user_answer():
