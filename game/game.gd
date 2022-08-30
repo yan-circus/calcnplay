@@ -13,6 +13,7 @@ var question_speed_init = 0			#cf calculate_question_speed()
 #var questTimer_wait_time_init = 3
 #var questTimer_wait_time_init = (1/question_speed)* 550		
 var display_quesion_timer_wait_time_init = 1
+var current_QuestTimer_wait_time = 0
 
 var nb_question = 0
 var step_difficultie = 0
@@ -95,19 +96,16 @@ func get_key_numpad():
 	
 
 func get_key(user_key):
-	var is_qst = check_quest_exist()
-	if is_qst:
+	var nb_qst = get_questions_count()
+	if nb_qst > 0:
 		list_user_keys.append(user_key)
 		print("touche: ",user_key, "liste keys: ", list_user_keys)
 		check_user_answer()
 
-func check_quest_exist():
-	var exist = true
+func get_questions_count():
 	var q = get_list_questions()
 	var nb_q  = len(q)
-	if nb_q ==0:
-		exist = false
-	return exist
+	return nb_q
 	
 	
 func check_user_answer():
@@ -133,7 +131,13 @@ func right_answer():
 		$Puzzle.display_all_parts()
 	$HUD.update_score(score)
 	$GoodAnswerSound.play()
+	var nb_qst = get_questions_count()
 	
+	#test si il n'y a plus qu'une seule  questions à l'écran
+	if nb_qst == 1:
+		questTimer_next_step(0.5)
+		
+		
 	current_body.queue_free()
 	
 	$delayActiveQuestionTimer.start()
@@ -150,6 +154,14 @@ func wrong_answer():
 	#print("colision: ",body)
 	$DisplayQuestionTimer.start()
 
+func questTimer_next_step(time_sec):
+	#permet de racourcir le temps restant à time_sec 
+	# afin de déclencher le timeout plus rapidement
+	$QuestTimer.stop()
+	$QuestTimer.wait_time = time_sec
+	$QuestTimer.start()
+	$QuestTimer.wait_time = current_QuestTimer_wait_time
+	
 func display_user_answer():
 	var format_user_answer = format_user_answer(current_user_answer, current_expected_answer)
 	$HUD.update_user_answer(format_user_answer)
@@ -242,6 +254,7 @@ func game_over():
 	$HUD.update_user_answer("")
 
 func _on_DisplayQuestionTimer_timeout():
+	questTimer_next_step(0.5)
 	current_body.queue_free()
 	if nb_lives <= 0:
 		print("game over")
@@ -310,6 +323,7 @@ func active_the_question(qst):
 func update_game_difficultie():
 	question_speed = question_speed * 1.2
 	$QuestTimer.wait_time =evaluate_quest_timer()
+	
 	update_display_wrong_timer()
 	print("TTTTTTTTTTTTTTTTTTTTTTTTTTTT")
 	print("nb quest: ", nb_question, "quest speed: ", question_speed, "quest timer: ", $QuestTimer.wait_time)
@@ -323,6 +337,7 @@ func evaluate_quest_timer():
 	var quest_time = (1.0/(question_speed+1))* 300
 	print("*******QUESTION TIMER*************",quest_time) 
 	print("*******question_speed*************",question_speed) 
+	current_QuestTimer_wait_time = quest_time
 	return quest_time
 
 func print_hello():
