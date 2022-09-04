@@ -27,7 +27,7 @@ __meta__ = {
 "_editor_description_": "fréquence d'apparition des questions"
 }
 
-[node name="DisplayQuestionTimer" type="Timer" parent="."]
+[node name="DisplayAnswerTimer" type="Timer" parent="."]
 one_shot = true
 __meta__ = {
 "_editor_description_": "en cas de réponse fausse délai pendant lequel la réponse attendue reste affichée."
@@ -35,14 +35,6 @@ __meta__ = {
 
 [node name="StartTimer" type="Timer" parent="."]
 one_shot = true
-
-[node name="delayActiveQuestionTimer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-__meta__ = {
-"_editor_description_": "delai entre la prise en charge d'une réponse et l'activation de la question suivante.
-(pour éviter les erreurs queue_free)"
-}
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 3
@@ -71,8 +63,7 @@ stream = ExtResource( 5 )
 
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="QuestTimer" to="." method="_on_quest_timer_timeout"]
-[connection signal="timeout" from="DisplayQuestionTimer" to="." method="_on_DisplayQuestionTimer_timeout"]
+[connection signal="timeout" from="DisplayAnswerTimer" to="." method="_on_DisplayAnswerTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
-[connection signal="timeout" from="delayActiveQuestionTimer" to="." method="_on_delayActiveQuestionTimer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="button_numpad_pressed" from="Numpad" to="." method="get_key_numpad"]

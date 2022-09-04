@@ -12,7 +12,7 @@ var question_speed_init = 0			#cf calculate_question_speed()
 
 #var questTimer_wait_time_init = 3
 #var questTimer_wait_time_init = (1/question_speed)* 550		
-var display_quesion_timer_wait_time_init = 1
+var display_answer_timer_wait_time_init = 1
 var current_QuestTimer_wait_time = 0
 
 var nb_question = 0
@@ -22,6 +22,9 @@ var nb_question_for_a_step = 20
 
 var screen_size
 var current_body		#pointe vers le dernier body qui a été en collision
+var pre_current_body	#pointe vers le body qui était précédemment le current_body.
+var is_question_active = false
+
 
 var current_question = ""
 var current_expected_answer = ""
@@ -58,7 +61,7 @@ func new_game():
 	question_speed = question_speed_init
 	$QuestTimer.wait_time = evaluate_quest_timer()
 	#$QuestTimer.wait_time = 5
-	$DisplayQuestionTimer.wait_time = display_quesion_timer_wait_time_init
+	$DisplayAnswerTimer.wait_time = display_answer_timer_wait_time_init
 	
 	display_user_answer()
 	$StartTimer.start()
@@ -152,9 +155,8 @@ func right_answer():
 	#test si il n'y a plus qu'une seule  questions à l'écran
 	if nb_qst == 1:
 		questTimer_next_step(0.5)
-		
-	current_body.queue_free()	#efface la question
-	$delayActiveQuestionTimer.start()
+	
+	select_quest_to_active_after_user_imput()
 
 func wrong_answer():
 	print("réponse utilisateur fausse. la réponse était : ", current_expected_answer)
@@ -166,13 +168,27 @@ func wrong_answer():
 	current_body.zero_gravity()
 	current_body.display_answer()
 	#print("colision: ",body)
-	$DisplayQuestionTimer.start()
+	$DisplayAnswerTimer.start()
 
 func display_user_answer():
 	var format_user_answer = format_user_answer(current_user_answer, current_expected_answer)
 	$HUD.update_user_answer(format_user_answer)
-	
-func _on_DisplayQuestionTimer_timeout():
+
+func select_quest_to_active_after_user_imput():
+	pre_current_body = current_body
+	var lst_qst = get_list_questions()
+	if len(lst_qst) > 1:
+		#on va activer la question suivante lst_qst[1]. 
+		#pas celle courante lst_qst[0] car celle-ci va être détruite
+		#le fait d'activer la question suivante avant de détruire l'autre
+		#permet d'éviter les problèmés d'accés à des objets détruit mais qui existe encore un laps de temps
+		active_the_question(lst_qst[1])	
+		destroy_pre_active_question()
+	else:
+		is_question_active = false
+		destroy_pre_active_question()
+
+func _on_DisplayAnswerTimer_timeout():
 	questTimer_next_step(0.5)
 	current_body.queue_free()
 	if nb_lives <= 0:
@@ -180,7 +196,8 @@ func _on_DisplayQuestionTimer_timeout():
 		game_over()
 	else:
 		$HUD.update_user_answer("")
-		$delayActiveQuestionTimer.start()
+		pre_current_body = current_body
+		select_quest_to_active_after_user_imput()
 
 func _on_Area2D_body_entered(body):
 	#ce déclenche quand la question touche le sol
@@ -225,32 +242,14 @@ func pick_a_question():
 	qst.init(pos)
 	var questions = get_list_questions()
 	print("liste des questions : ", questions)
-	if len(questions) == 1:
+	if not is_question_active:
 		print("ACTIVATION LORS DE PICK_A_QUESTION")
-		select_question_to_active()
+		var lst_quest = get_list_questions()
+		active_the_question(lst_quest[0])
 
 func position_the_question(var qsz):
 	var posx = (randf() * (screen_size.x - qsz.x)) +  (qsz.x /2)
 	return posx
-	
-func choose_question():
-	#a+b = c
-	var max_result = 10
-	var expected_answer = ""
-	var choosen_question = ""
-	var q=[0,0,0]
-	var result = -1
-	while result <0 or result > 10:
-		q[0] = int(rand_range(1,9)) 	#opérande a
-		q[1] = int(rand_range(1,9)) 	#opérande b
-		q[2]= q[0] + q[1]			 	#résultat c
-		result = q[2]
-	
-	expected_answer = str(q[2])
-	choosen_question = str(q[0]) + "+" + str(q[1])
-	var question_datas = [expected_answer, choosen_question]
-	print ("choose question : ",question_datas)
-	return question_datas
 
 func format_user_answer(user_anwser, expected_answer):
 	#dans la zone de saisie utilisateur.
@@ -263,26 +262,22 @@ func format_user_answer(user_anwser, expected_answer):
 	var nb_trema = len_exp_ans - len_user_ans
 	format_user_answer = "-".repeat(nb_trema) + user_anwser
 	return format_user_answer
-	
+
+func destroy_pre_active_question():
+	pre_current_body.queue_free()
+
+func destroy_one_question(q):
+	q.queue_free()
+
 func game_over():
 	is_playing = false
 	$QuestTimer.stop()
 	get_tree().call_group("questions", "queue_free")
 	$HUD.show_game_over()
 	$HUD.update_user_answer("")
-
-func _on_delayActiveQuestionTimer_timeout():
-	select_question_to_active()
-
-func select_question_to_active():
-	#cette fonction va activer la bonne question (celle la plus basse)
-	var questions = get_list_questions()
-	if len(questions)>0:
-		var qst = questions[0]
-		print("questions: ", len(questions) , questions)
-		active_the_question(qst)
-		
+	
 func active_the_question(qst):
+	is_question_active = true
 	current_body = qst
 	qst.set_animation("active")
 	current_question = qst.get_question()
@@ -311,8 +306,8 @@ func update_game_difficultie():
 	print("nb quest: ", nb_question, "quest speed: ", question_speed, "quest timer: ", $QuestTimer.wait_time)
 	
 func update_display_wrong_timer():
-	if $DisplayQuestionTimer.wait_time <= $QuestTimer.wait_time * 1.5:
-		$DisplayQuestionTimer.wait_time = $DisplayQuestionTimer.wait_time * .7
+	if $DisplayAnswerTimer.wait_time <= $QuestTimer.wait_time * 1.5:
+		$DisplayAnswerTimer.wait_time = $DisplayAnswerTimer.wait_time * .7
 
 func evaluate_quest_timer():
 	#petit calcul pour que la fréquece des questions soit légerement plus élevée que la durée de chute

@@ -17,10 +17,10 @@ func init(p):
 	list_files = list_files_in_directory(path)
 	print(list_files)
 	list_files.shuffle()
-	current_file
+	#current_file
 
 func choose_background():
-	var current_file = list_files[randi() % len(list_files)]
+	current_file = list_files[randi() % len(list_files)]
 	print(current_file)
 	var path_and_file = path +"/" + current_file
 	print(path_and_file)
