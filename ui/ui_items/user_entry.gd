@@ -14,11 +14,7 @@ func set_id_user(id):
 
 func set_image(img):
 	var texture_file = path_avatar_image + img
-	var texture = ImageTexture.new()
-	var image = Image.new()
-	image.load(texture_file)
-	texture.create_from_image(image)
-	$container/Sprite.texture = texture
+	$container/Sprite.texture = load(texture_file)
 
 
 func start_game():

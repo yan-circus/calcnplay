@@ -1,20 +1,14 @@
 extends Node2D
 var list_files = []
 var current_file = ""
-var path
+var path = ""
 
-
-
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
-	
 
 func init(p):
 	path = p
-	list_files = list_files_in_directory(path)
+	list_files = get_list_files()
 	#print(list_files)
 	list_files.shuffle()
 	#current_file
@@ -25,16 +19,10 @@ func choose_background():
 	print(current_file)
 	var path_and_file = path +"/" + current_file
 	print(path_and_file)
-	var image = Image.new()
-	image.load(path_and_file)
-	var itex = ImageTexture.new()
-	itex.create_from_image(image)
-
-	$BgRect.texture = itex
 	
-	#$BgRect.texture = load(image_texture)
+	$BgRect.texture = load(path_and_file)
 
-func list_files_in_directory(path):
+func get_list_files():
 	var files = []
 	var dir = Directory.new()
 	print("voici le path: ", path, "***fin***")
@@ -53,6 +41,4 @@ func list_files_in_directory(path):
 				files.append(file)
 			
 	dir.list_dir_end()
-	
-	#print("liste fichiers: ", files , "***fin")
 	return files
