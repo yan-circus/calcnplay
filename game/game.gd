@@ -115,10 +115,13 @@ func _input(event):
 		get_key(user_key)
 		
 
-func get_key_numpad():
-	var key_numpad = $Numpad.key_bt
-	get_key(key_numpad)
-	
+#func get_key_numpad():
+#	var key_numpad = $Numpad.key_bt
+#	get_key(key_numpad)
+
+func _on_Numpad_numpad_button_pressed(key_numpad):
+		get_key(str(key_numpad))
+
 
 func get_key(user_key):
 	var nb_qst = get_questions_count()
@@ -316,4 +319,6 @@ func evaluate_quest_timer():
 	print("*******question_speed*************",question_speed) 
 	current_QuestTimer_wait_time = quest_time
 	return quest_time
+
+
 

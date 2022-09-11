@@ -7,8 +7,8 @@
 script = ExtResource( 2 )
 
 [node name="BgRect" type="TextureRect" parent="."]
-margin_right = 1408.0
-margin_bottom = 800.0
+margin_right = 1366.0
+margin_bottom = 768.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 2

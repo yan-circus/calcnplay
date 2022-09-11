@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/fonts/Dyuthi.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://themes/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://ui/ui_items/game_entry.gd" type="Script" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-size = 17
-font_data = ExtResource( 1 )
 
 [sub_resource type="ButtonGroup" id=2]
 
@@ -14,54 +10,54 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -746.0
 size_flags_horizontal = 3
+theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
-margin_right = 680.0
-margin_bottom = 18.0
+margin_right = 1191.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 1 )
 text = "Table de multiplication 1-10"
 
 [node name="Button_Level1" type="Button" parent="."]
-margin_left = 684.0
-margin_right = 704.0
-margin_bottom = 20.0
+margin_left = 1195.0
+margin_right = 1221.0
+margin_bottom = 47.0
 size_flags_vertical = 0
 text = "1"
 
 [node name="Button_Level2" type="Button" parent="."]
-margin_left = 708.0
-margin_right = 728.0
-margin_bottom = 20.0
+margin_left = 1225.0
+margin_right = 1256.0
+margin_bottom = 47.0
 size_flags_vertical = 0
 group = SubResource( 2 )
 text = "2"
 
 [node name="Button_Level3" type="Button" parent="."]
-margin_left = 732.0
-margin_right = 752.0
-margin_bottom = 20.0
+margin_left = 1260.0
+margin_right = 1290.0
+margin_bottom = 47.0
 size_flags_vertical = 0
 group = SubResource( 2 )
 text = "3"
 
 [node name="Button_Level4" type="Button" parent="."]
-margin_left = 756.0
-margin_right = 776.0
-margin_bottom = 20.0
+margin_left = 1294.0
+margin_right = 1330.0
+margin_bottom = 47.0
 size_flags_vertical = 0
 group = SubResource( 2 )
 text = "4"
 
 [node name="Button_Level5" type="Button" parent="."]
-margin_left = 780.0
-margin_right = 800.0
-margin_bottom = 20.0
+margin_left = 1334.0
+margin_right = 1366.0
+margin_bottom = 47.0
 size_flags_vertical = 0
 group = SubResource( 2 )
 text = "5"

@@ -15,12 +15,13 @@ func _ready():
 func init(p):
 	path = p
 	list_files = list_files_in_directory(path)
-	print(list_files)
+	#print(list_files)
 	list_files.shuffle()
 	#current_file
 
 func choose_background():
 	current_file = list_files[randi() % len(list_files)]
+	print("IMAGE BACKGROUND")
 	print(current_file)
 	var path_and_file = path +"/" + current_file
 	print(path_and_file)
@@ -30,7 +31,6 @@ func choose_background():
 	itex.create_from_image(image)
 
 	$BgRect.texture = itex
-	
 	
 	#$BgRect.texture = load(image_texture)
 
@@ -54,5 +54,5 @@ func list_files_in_directory(path):
 			
 	dir.list_dir_end()
 	
-	print("liste fichiers: ", files , "***fin")
+	#print("liste fichiers: ", files , "***fin")
 	return files

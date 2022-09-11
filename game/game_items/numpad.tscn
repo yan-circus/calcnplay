@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://themes/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://game/game_items/numpad.gd" type="Script" id=2]
+[ext_resource path="res://game/game_items/numpad_button.tscn" type="PackedScene" id=3]
 
 [sub_resource type="GDScript" id=1]
 
@@ -12,7 +13,9 @@ script = ExtResource( 2 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -51.0
+margin_top = -104.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.69
 theme = ExtResource( 1 )
 script = SubResource( 1 )
 __meta__ = {
@@ -21,90 +24,22 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Vbox_numpad"]
 margin_right = 1366.0
-margin_bottom = 47.0
+margin_bottom = 100.0
+size_flags_vertical = 3
+custom_constants/separation = 0
 
-[node name="button_key1" type="Button" parent="Vbox_numpad/HBoxContainer"]
-margin_right = 133.0
-margin_bottom = 47.0
+[node name="numpad_button1" parent="Vbox_numpad/HBoxContainer" instance=ExtResource( 3 )]
+visible = false
+margin_right = 683.0
 size_flags_horizontal = 3
-text = "1"
 
-[node name="button_key2" type="Button" parent="Vbox_numpad/HBoxContainer"]
-margin_left = 137.0
-margin_right = 270.0
-margin_bottom = 47.0
-size_flags_horizontal = 3
-text = "2"
-
-[node name="button_key3" type="Button" parent="Vbox_numpad/HBoxContainer"]
-margin_left = 274.0
-margin_right = 407.0
-margin_bottom = 47.0
-size_flags_horizontal = 3
-text = "3"
-
-[node name="button_key4" type="Button" parent="Vbox_numpad/HBoxContainer"]
-margin_left = 411.0
-margin_right = 544.0
-margin_bottom = 47.0
-size_flags_horizontal = 3
-text = "4"
-
-[node name="button_key5" type="Button" parent="Vbox_numpad/HBoxContainer"]
-margin_left = 548.0
-margin_right = 681.0
-margin_bottom = 47.0
-size_flags_horizontal = 3
-text = "5"
-
-[node name="button_key6" type="Button" parent="Vbox_numpad/HBoxContainer"]
-margin_left = 685.0
-margin_right = 818.0
-margin_bottom = 47.0
-size_flags_horizontal = 3
-text = "6"
-
-[node name="button_key7" type="Button" parent="Vbox_numpad/HBoxContainer"]
-margin_left = 822.0
-margin_right = 955.0
-margin_bottom = 47.0
-size_flags_horizontal = 3
-text = "7"
-
-[node name="button_key8" type="Button" parent="Vbox_numpad/HBoxContainer"]
-margin_left = 959.0
-margin_right = 1092.0
-margin_bottom = 47.0
-size_flags_horizontal = 3
-text = "8"
-
-[node name="button_key9" type="Button" parent="Vbox_numpad/HBoxContainer"]
-margin_left = 1096.0
-margin_right = 1229.0
-margin_bottom = 47.0
-size_flags_horizontal = 3
-text = "9"
-
-[node name="button_key0" type="Button" parent="Vbox_numpad/HBoxContainer"]
-margin_left = 1233.0
+[node name="numpad_button2" parent="Vbox_numpad/HBoxContainer" instance=ExtResource( 3 )]
+visible = false
 margin_right = 1366.0
-margin_bottom = 47.0
 size_flags_horizontal = 3
-text = "0"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Vbox_numpad"]
-margin_top = 51.0
+margin_top = 104.0
 margin_right = 1366.0
-margin_bottom = 51.0
+margin_bottom = 104.0
 size_flags_horizontal = 3
-
-[connection signal="pressed" from="Vbox_numpad/HBoxContainer/button_key1" to="." method="_on_button_key1_pressed"]
-[connection signal="pressed" from="Vbox_numpad/HBoxContainer/button_key2" to="." method="_on_button_key2_pressed"]
-[connection signal="pressed" from="Vbox_numpad/HBoxContainer/button_key3" to="." method="_on_button_key3_pressed"]
-[connection signal="pressed" from="Vbox_numpad/HBoxContainer/button_key4" to="." method="_on_button_key4_pressed"]
-[connection signal="pressed" from="Vbox_numpad/HBoxContainer/button_key5" to="." method="_on_button_key5_pressed"]
-[connection signal="pressed" from="Vbox_numpad/HBoxContainer/button_key6" to="." method="_on_button_key6_pressed"]
-[connection signal="pressed" from="Vbox_numpad/HBoxContainer/button_key7" to="." method="_on_button_key7_pressed"]
-[connection signal="pressed" from="Vbox_numpad/HBoxContainer/button_key8" to="." method="_on_button_key8_pressed"]
-[connection signal="pressed" from="Vbox_numpad/HBoxContainer/button_key9" to="." method="_on_button_key9_pressed"]
-[connection signal="pressed" from="Vbox_numpad/HBoxContainer/button_key0" to="." method="_on_button_key0_pressed"]

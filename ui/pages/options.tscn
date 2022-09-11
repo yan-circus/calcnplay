@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/Dyuthi.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/pages/options.gd" type="Script" id=2]
 [ext_resource path="res://themes/ui_theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/fonts/title72.tres" type="DynamicFont" id=4]
 [ext_resource path="res://ui/ui_assets/buttons/arrow_back.png" type="Texture" id=5]
 [ext_resource path="res://ui/ui_assets/buttons/arrow_back_pressed.png" type="Texture" id=8]
 [ext_resource path="res://ui/ui_assets/buttons/arrow_back_hover.png" type="Texture" id=9]
@@ -45,30 +46,30 @@ __meta__ = {
 }
 
 [node name="header" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 780.0
-margin_bottom = 50.0
+margin_right = 1346.0
+margin_bottom = 73.0
 
 [node name="Tbutton_back" type="TextureButton" parent="VBoxContainer/header"]
 margin_right = 66.0
-margin_bottom = 50.0
+margin_bottom = 73.0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="VBoxContainer/header"]
 margin_left = 70.0
-margin_top = 8.0
-margin_right = 780.0
-margin_bottom = 41.0
+margin_right = 1346.0
+margin_bottom = 73.0
 size_flags_horizontal = 3
-text = "OPtions"
+custom_fonts/font = ExtResource( 4 )
+text = "Options"
 align = 1
 
 [node name="content" type="VBoxContainer" parent="VBoxContainer"]
-margin_left = 280.0
-margin_top = 241.0
-margin_right = 499.0
-margin_bottom = 396.0
+margin_left = 563.0
+margin_top = 316.0
+margin_right = 782.0
+margin_bottom = 471.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
@@ -106,9 +107,9 @@ __meta__ = {
 }
 
 [node name="footer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 587.0
-margin_right = 780.0
-margin_bottom = 620.0
+margin_top = 715.0
+margin_right = 1346.0
+margin_bottom = 748.0
 
 [node name="lbl_footer" type="Label" parent="VBoxContainer/footer"]
 margin_right = 152.0

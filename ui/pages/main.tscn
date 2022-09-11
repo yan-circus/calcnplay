@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/fonts/Dyuthi.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/pages/main.gd" type="Script" id=2]
 [ext_resource path="res://ui/ui_items/game_entry.tscn" type="PackedScene" id=3]
 [ext_resource path="res://themes/ui_theme.tres" type="Theme" id=4]
 [ext_resource path="res://ui/ui_assets/buttons/cross_exit_hover.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/title72.tres" type="DynamicFont" id=6]
+[ext_resource path="res://ui/ui_assets/theme_user/fond_cheval_rose.png" type="Texture" id=7]
 [ext_resource path="res://ui/ui_assets/buttons/cross_exit.png" type="Texture" id=8]
 [ext_resource path="res://ui/ui_assets/buttons/cross_exit_pressed.png" type="Texture" id=9]
 [ext_resource path="res://ui/ui_assets/buttons/settings_hover.png" type="Texture" id=10]
@@ -25,13 +27,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.92549, 0.47451, 0.109804, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource( 7 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -46,14 +45,14 @@ __meta__ = {
 
 [node name="header" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 1346.0
-margin_bottom = 50.0
+margin_bottom = 73.0
 
 [node name="LabelTitle" type="Label" parent="VBoxContainer/header"]
-margin_top = 8.0
 margin_right = 1238.0
-margin_bottom = 41.0
+margin_bottom = 73.0
 size_flags_horizontal = 3
-text = "main screen"
+custom_fonts/font = ExtResource( 6 )
+text = "Calc&Play"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -71,7 +70,7 @@ align = 1
 [node name="Tbutton_options" type="TextureButton" parent="VBoxContainer/header"]
 margin_left = 1242.0
 margin_right = 1292.0
-margin_bottom = 50.0
+margin_bottom = 73.0
 rect_pivot_offset = Vector2( 171.819, 80 )
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 12 )
@@ -80,15 +79,15 @@ texture_hover = ExtResource( 10 )
 [node name="Tbutton_bexit" type="TextureButton" parent="VBoxContainer/header"]
 margin_left = 1296.0
 margin_right = 1346.0
-margin_bottom = 50.0
+margin_bottom = 73.0
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 5 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 54.0
+margin_top = 77.0
 margin_right = 1346.0
-margin_bottom = 711.0
+margin_bottom = 744.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 100
@@ -100,14 +99,14 @@ custom_constants/margin_bottom = 50
 margin_left = 100.0
 margin_top = 50.0
 margin_right = 1246.0
-margin_bottom = 607.0
+margin_bottom = 617.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="content" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
-margin_top = 278.0
+margin_top = 283.0
 margin_right = 1146.0
-margin_bottom = 278.0
+margin_bottom = 283.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 
@@ -115,29 +114,28 @@ size_flags_vertical = 6
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 580.0
-margin_bottom = 39.0
+margin_right = 1146.0
+margin_bottom = 47.0
 size_flags_horizontal = 1
 
 [node name="display_test_line_preset2" parent="VBoxContainer/MarginContainer/ScrollContainer/content" instance=ExtResource( 3 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 43.0
-margin_right = 580.0
-margin_bottom = 82.0
+margin_right = 1146.0
+margin_bottom = 47.0
 size_flags_horizontal = 5
 
 [node name="bottom_bar" type="VBoxContainer" parent="VBoxContainer"]
 visible = false
-margin_top = 547.0
-margin_right = 780.0
-margin_bottom = 602.0
+margin_top = 689.0
+margin_right = 1346.0
+margin_bottom = 744.0
 size_flags_vertical = 0
 
 [node name="ButtonPlay" type="Button" parent="VBoxContainer/bottom_bar"]
-margin_left = 343.0
-margin_right = 436.0
+margin_left = 626.0
+margin_right = 719.0
 margin_bottom = 55.0
 rect_pivot_offset = Vector2( 171.819, 80 )
 size_flags_horizontal = 4
@@ -148,7 +146,7 @@ __meta__ = {
 }
 
 [node name="footer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 715.0
+margin_top = 748.0
 margin_right = 1346.0
 margin_bottom = 748.0
 size_flags_horizontal = 3
@@ -172,8 +170,9 @@ __meta__ = {
 }
 
 [node name="lbl_footer" type="Label" parent="VBoxContainer/footer"]
+visible = false
 margin_right = 1346.0
-margin_bottom = 33.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
 text = "text_footer"
 align = 1

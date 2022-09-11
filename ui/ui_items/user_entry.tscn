@@ -12,21 +12,21 @@ resource_name = "users_selection"
 [node name="user_entry" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -668.0
-margin_bottom = -476.0
+margin_right = -1227.0
+margin_bottom = -622.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="container" type="CenterContainer" parent="."]
-margin_right = 132.0
+margin_right = 139.0
 margin_bottom = 128.0
 mouse_filter = 1
 
 [node name="UserButton" type="TextureButton" parent="container"]
-margin_left = 2.0
-margin_right = 130.0
+margin_left = 5.0
+margin_right = 133.0
 margin_bottom = 128.0
 toggle_mode = true
 group = SubResource( 1 )
@@ -43,7 +43,7 @@ texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
 margin_top = 132.0
-margin_right = 132.0
+margin_right = 139.0
 margin_bottom = 146.0
 size_flags_vertical = 8
 text = "SILOE"
