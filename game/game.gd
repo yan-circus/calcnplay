@@ -19,7 +19,8 @@ var nb_question = 0
 var step_difficultie = 0
 var nb_question_for_a_step = 20
 
-
+#$Area2D/Ground.position 
+ #print("position ground : ", collision_ground_pos) 
 var screen_size
 var current_body		#pointe vers le dernier body qui a été en collision
 var pre_current_body	#pointe vers le body qui était précédemment le current_body.
