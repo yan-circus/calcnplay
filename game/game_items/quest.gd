@@ -55,6 +55,7 @@ func update_speed(sp):
 func choose_question():
 	var question_datas
 	if GlobalVariables.current_preset["type"] == "calculated_by_computer":
+		print("calculated_by_computer")
 		question_datas = choose_question_calculated_by_computer()
 		print ("choosen question : ",question_datas)
 	else:
@@ -67,6 +68,10 @@ func choose_question_calculated_by_computer():
 	var q_datas
 	var is_max_result = true
 	var max_result = GlobalVariables.current_preset["max_result"]
+	#var min_result = GlobalVariables.current_preset["min_result"]
+	var coef_mulitiplier = GlobalVariables.current_preset["coef_multiplier"]
+	print("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM")
+	print(coef_mulitiplier)
 	if max_result == 0:
 		is_max_result = false
 	var max_values = GlobalVariables.current_preset["max_values"]
@@ -82,9 +87,10 @@ func choose_question_calculated_by_computer():
 	var calcul_datas = {}
 	
 	while 1:
-		q[0] = int(rand_range(min_values[0],max_values[0]+1)) 	#opérande a
-		
-		q[1] = int(rand_range(min_values[1],max_values[1]+1)) 	#opérande b
+		q[0] = int(rand_range(min_values[0],max_values[0]+1))*coef_mulitiplier[0] 	#opérande a
+		#q[0] = int(rand_range(min_values[0],max_values[0]+1)) 	#opérande a
+		q[1] = int(rand_range(min_values[1],max_values[1]+1))*coef_mulitiplier[1] 	#opérande b
+		#q[1] = int(rand_range(min_values[1],max_values[1]+1)) 	#opérande b
 		operator = operators[int(rand_range(0,len(operators)))]			#choisi un opérateur parmi la les opérateur présents dans le chaine de caractère 'operators'
 
 		calcul_datas = calulate_by_operators(q,operator)
@@ -105,6 +111,8 @@ func choose_question_calculated_by_computer():
 	return q_datas
 	
 func calulate_by_operators(ops,operator):
+	print("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+	print(ops,":",operator)
 	var calcul_datas = {}
 	var result = 0
 	var choosen_question = ""
