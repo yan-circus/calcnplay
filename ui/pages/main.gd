@@ -14,6 +14,8 @@ func _ready():
 	print("***")
 	print("sound : " , GlobalVariables.sound_state)
 	print("music : " , GlobalVariables.music_state)
+	var p =QuestionsManager.get_path_question_file()
+	$VBoxContainer/footer/lbl_footer.text = "**"+p+"$$"
 	load_questions()
 
 

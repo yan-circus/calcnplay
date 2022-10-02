@@ -25,8 +25,6 @@ var screen_size
 var current_body		#pointe vers le dernier body qui a été en collision
 var pre_current_body	#pointe vers le body qui était précédemment le current_body.
 var is_question_active = false
-
-
 var current_question = ""
 var current_expected_answer = ""
 var current_user_answer = ""
@@ -38,6 +36,10 @@ var list_user_keys = []
 
 
 func _ready():
+	init_game()
+	print("___________________________________________")
+	print("lancement d'un partie")
+	
 	calculate_question_speed()
 	if GlobalVariables.display_numpad:
 		$Numpad.show_numpad()
@@ -52,7 +54,19 @@ func _ready():
 	randomize()
 	new_game()
 
+func init_game():
+	is_question_active = false
+	current_question = ""
+	current_expected_answer = ""
+	current_user_answer = ""
+
+	is_playing = false
+	is_waiting_answer = false
+	cpt_key =0
+	list_user_keys = []
+	
 func new_game():
+	init_game()
 	print("new game")
 	is_playing = true
 	$Bg.choose_background()

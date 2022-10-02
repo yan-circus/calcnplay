@@ -67,6 +67,16 @@ margin_bottom = 40.0
 text = "OPtions"
 align = 1
 
+[node name="Tbutton_options2" type="TextureButton" parent="VBoxContainer/header"]
+visible = false
+margin_left = 1188.0
+margin_right = 1238.0
+margin_bottom = 73.0
+rect_pivot_offset = Vector2( 171.819, 80 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 10 )
+
 [node name="Tbutton_options" type="TextureButton" parent="VBoxContainer/header"]
 margin_left = 1242.0
 margin_right = 1292.0
@@ -189,6 +199,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="pressed" from="VBoxContainer/header/Tbutton_options2" to="." method="_on_ButtonOptions_pressed"]
 [connection signal="pressed" from="VBoxContainer/header/Tbutton_options" to="." method="_on_ButtonOptions_pressed"]
 [connection signal="pressed" from="VBoxContainer/header/Tbutton_bexit" to="." method="_on_Tbutton_bexit_pressed"]
 [connection signal="pressed" from="VBoxContainer/bottom_bar/ButtonPlay" to="." method="_on_ButtonPlay_pressed"]

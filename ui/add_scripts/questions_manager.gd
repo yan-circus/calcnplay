@@ -75,3 +75,11 @@ func get_preset_by_id(id):
 		if int(i["id"]) == id:
 			curent_preset = i
 	return curent_preset
+
+func get_path_question_file():
+	var file = File.new()
+	file.open(path, file.READ)
+	var p = file.get_path_absolute()
+	file.close()
+	
+	return p
